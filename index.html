@@ -154,7 +154,8 @@
     const playBtn = document.getElementById('playBtn');
     async function tryPlay(){try{await audio.play();overlay.style.display='none'}catch(e){overlay.style.display='flex'}}
     window.addEventListener('load',()=>{setTimeout(tryPlay,400)});
-    overlayPlay.addEventListener('click',()=>{audio.play().catch(()=>{});overlay.style.display='none';startConfetti()});
+    overlayPlay.addEventListener('click',()=>{audio.play().catch(()=>{});overlay.style.display='none';startConfetti();});
+    overlay.style.pointerEvents='auto';('click',()=>{audio.play().catch(()=>{});overlay.style.display='none';startConfetti()});
     playBtn.addEventListener('click',()=>{audio.play().catch(()=>{});startConfetti()});
 
     // Download button (prepare a small snapshot zip client-side? We'll fallback to opening images)
