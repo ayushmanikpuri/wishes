@@ -1,364 +1,209 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Happy Birthday!</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Pacifico&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#fff7fb;
-    --accent:#ff8fb1;
-    --accent2:#ffd6e8;
-    --gold:#f2c66a;
-    --card:#ffffffcc;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:Inter, system-ui, sans-serif;
-    background: radial-gradient(1200px 600px at 10% 10%, #fff1f6 0%, var(--bg) 30%),
-                linear-gradient(180deg,#fff 0%, #fff8f9 100%);
-    color:#3b2b2b;
-    -webkit-font-smoothing:antialiased;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>✨ For My Bestie — Happy Birthday ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Parisienne&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0b0f1a; --bg2:#1b0527;
+      --neon1:#ff6bd6; --neon2:#8a5cff; --neon3:#ffd86b;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Montserrat,system-ui,Arial;color:#fff;background:radial-gradient(1200px 600px at 10% 10%, rgba(138,92,255,0.12), transparent 10%), linear-gradient(180deg,var(--bg1),var(--bg2));-webkit-font-smoothing:antialiased}
 
-  /* Container */
-  .wrap{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:28px;
-  }
-  .card{
-    width:100%;
-    max-width:980px;
-    background:var(--card);
-    border-radius:20px;
-    box-shadow: 0 10px 40px rgba(88,45,80,0.12);
-    padding:24px;
-    position:relative;
-    overflow:hidden;
-  }
+    /* Container */
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px}
+    .stage{width:100%;max-width:950px;border-radius:20px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 20px 50px rgba(2,6,23,0.6);position:relative;overflow:hidden}
 
-  /* Header */
-  .hero{
-    display:grid;
-    grid-template-columns: 1fr 420px;
-    gap:22px;
-  }
-  @media (max-width:880px){
-    .hero{grid-template-columns: 1fr; padding-bottom:8px;}
-  }
-  .left{
-    padding:18px;
-  }
-  h1{
-    font-family:'Pacifico', cursive;
-    font-size:42px;
-    margin:0 0 6px 0;
-    color:#5b2240;
-    text-shadow: 0 2px 0 rgba(255,255,255,0.6);
-  }
-  .subtitle{
-    font-family:'Playfair Display', serif;
-    color:#7b3d51;
-    margin:0 0 14px 0;
-    font-size:18px;
-  }
-  .message{
-    background:linear-gradient(180deg,#ffffff, #fff0f3);
-    border-radius:12px;
-    padding:12px 14px;
-    font-size:15px;
-    color:#5b3b43;
-    line-height:1.5;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-  }
+    /* Neon header */
+    header{display:flex;align-items:center;gap:14px}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--neon1),var(--neon2));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;box-shadow:0 6px 30px rgba(138,92,255,0.18),0 0 20px rgba(255,107,214,0.06)}
+    .title{font-weight:800;font-size:22px;letter-spacing:0.2px}
+    .subtitle{opacity:0.85;font-size:13px;margin-top:4px}
 
-  /* Slideshow area */
-  .slideshow{
-    position:relative;
-    height:320px;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 8px 30px rgba(91,32,64,0.08);
-    background:linear-gradient(180deg, #ffdfee, #fff);
-  }
-  @media (max-width:880px){
-    .slideshow{height:260px}
-  }
-  .slides{
-    position:absolute;
-    inset:0;
-    display:flex;
-    transition:transform 0.8s ease;
-  }
-  .slide{
-    min-width:100%;
-    height:100%;
-    background-size:cover;
-    background-position:center;
-    transform-origin:center;
-    display:flex;
-    align-items:flex-end;
-    justify-content:flex-start;
-    padding:16px;
-  }
-  .slide .caption{
-    background:rgba(255,255,255,0.7);
-    border-radius:10px;
-    padding:8px 10px;
-    margin-bottom:14px;
-    font-weight:600;
-    color:#6b2d44;
-    backdrop-filter: blur(4px);
-  }
+    /* Main visual: 3D-ish carousel with glass card */
+    .hero{display:flex;gap:18px;margin-top:16px;align-items:center}
+    .left{flex:1;min-width:250px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:14px;backdrop-filter:blur(6px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02),0 18px 40px rgba(2,6,23,0.6)}
+    .big-photo{width:100%;height:420px;border-radius:12px;overflow:hidden;position:relative;border:2px solid rgba(255,255,255,0.03)}
+    .big-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform 0.8s cubic-bezier(.2,.8,.2,1)}
+    .big-photo:hover img{transform:scale(1.04) rotate(-0.6deg)}
 
-  /* thumbnail strip */
-  .thumbs{
-    display:flex;
-    gap:8px;
-    margin-top:12px;
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-  .thumb{
-    width:60px;height:60px;border-radius:8px;overflow:hidden;border:3px solid transparent;
-    cursor:pointer;box-shadow:0 6px 18px rgba(80,20,60,0.06);
-  }
-  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-  .thumb.active{border-color:var(--accent)}
+    /* thumbnails */
+    .thumbs{display:flex;gap:8px;margin-top:10px}
+    .thumb{width:56px;height:56px;border-radius:10px;overflow:hidden;cursor:pointer;flex:0 0 56px;border:2px solid transparent;transition:transform .2s, border-color .2s}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .thumb.active{transform:translateY(-6px);border-color:linear-gradient(90deg,var(--neon1),var(--neon2));box-shadow:0 10px 30px rgba(138,92,255,0.12)}
 
-  /* controls and music */
-  .controls{
-    position:absolute;
-    right:16px;
-    top:16px;
-    display:flex;
-    gap:8px;
-    z-index:6;
-  }
-  .btn{
-    background:linear-gradient(180deg,#fff,#ffeef8);
-    padding:8px 12px;border-radius:999px;border:0;cursor:pointer;font-weight:600;
-    box-shadow:0 6px 14px rgba(80,30,60,0.06);
-  }
+    /* right panel — message + effects */
+    .right{width:360px}
+    .neonName{font-family:Parisienne, cursive;font-size:44px;text-shadow:0 0 8px rgba(255,107,214,0.25),0 0 24px rgba(138,92,255,0.12);margin:6px 0}
+    .typed{font-size:15px;opacity:0.95;margin-bottom:12px}
 
-  /* floating hearts/confetti */
-  .float-wrap{pointer-events:none;position:absolute;inset:0;overflow:hidden}
-  .heart{
-    position:absolute;
-    animation: floatUp linear infinite;
-    opacity:0.95;
-    transform-origin:center;
-  }
-  @keyframes floatUp{
-    0%{ transform:translateY(50vh) scale(0.6) rotate(0deg); opacity:0}
-    10%{opacity:1}
-    100%{ transform:translateY(-20vh) scale(1) rotate(360deg); opacity:0}
-  }
+    /* CTA & heart */
+    .actions{display:flex;gap:12px;align-items:center}
+    .btn{padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--neon1),var(--neon2));font-weight:700;box-shadow:0 10px 30px rgba(138,92,255,0.12);cursor:pointer;border:none;color:#0b0f1a}
+    .outline{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;cursor:pointer}
+    .heart{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--neon3),var(--neon1));box-shadow:0 8px 30px rgba(255,216,107,0.12);cursor:pointer}
 
-  /* start overlay */
-  .start-overlay{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,0.66), rgba(255,240,250,0.2));
-    z-index:8;border-radius:20px;backdrop-filter: blur(4px);
-  }
-  .start-btn{
-    background:linear-gradient(90deg,var(--accent),var(--gold));
-    color:white;padding:14px 22px;border-radius:28px;border:0;font-size:18px;cursor:pointer;box-shadow:0 10px 30px rgba(240,110,160,0.24)
-  }
+    /* glow lines */
+    .glowLine{height:6px;border-radius:999px;background:linear-gradient(90deg, rgba(255,107,214,0.12), rgba(138,92,255,0.12));margin-top:12px}
 
-  footer{margin-top:14px;text-align:center;color:#8a5a68;font-size:13px}
-</style>
+    /* mini confetti sparkles */
+    .sparkle{position:absolute;filter:blur(.6px);opacity:.9}
+
+    /* mobile adjustments */
+    @media (max-width:820px){.hero{flex-direction:column}.right{width:100%}.big-photo{height:320px}.neonName{font-size:36px}}
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="card" aria-live="polite">
-    <div class="controls" role="toolbar" aria-label="controls">
-      <button class="btn" id="prevBtn" title="Previous">Prev</button>
-      <button class="btn" id="nextBtn" title="Next">Next</button>
-      <button class="btn" id="muteBtn" title="Toggle music">Mute</button>
-    </div>
+  <div class="wrap">
+    <div class="stage" id="stage">
 
-    <div class="hero">
-      <div class="left">
-        <h1 id="title">Happy Birthday, <span id="name">Bestie</span>! 🎉</h1>
-        <p class="subtitle">A special day for a special soul</p>
-        <div class="message" id="message">
-          Happy Birthday, my dear! May your day be filled with smiles, cake, and endless love. You make every day brighter — love you loads! 💖
+      <!-- sparkles SVGs -->
+      <svg class="sparkle" style="top:-30px;left:-30px;width:220px;opacity:0.12;" viewBox="0 0 100 100"><g fill="none" stroke="url(#g1)" stroke-width="2"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ff6bd6"/><stop offset="1" stop-color="#8a5cff"/></linearGradient></defs><path d="M50 2 L58 36 L92 50 L58 64 L50 98 L42 64 L8 50 L42 36 Z" /></g></svg>
+
+      <header>
+        <div class="logo">❤</div>
+        <div style="flex:1">
+          <div class="title">Happy Birthday — <span style="color:var(--neon1)">Surprise</span></div>
+          <div class="subtitle">A cool, romantic vibe — built just for her. Mobile-ready.</div>
+        </div>
+        <div style="text-align:right;font-size:13px;opacity:0.9">6 photos • Animated • Music</div>
+      </header>
+
+      <div class="hero">
+        <div class="left">
+          <div class="card">
+            <div class="big-photo" id="bigPhoto">
+              <img src="photos/photo1.jpg" alt="photo big" id="bigImg">
+            </div>
+            <div class="thumbs" id="thumbs">
+              <div class="thumb active" data-i="0"><img src="photos/photo1.jpg"></div>
+              <div class="thumb" data-i="1"><img src="photos/photo2.jpg"></div>
+              <div class="thumb" data-i="2"><img src="photos/photo3.jpg"></div>
+              <div class="thumb" data-i="3"><img src="photos/photo4.jpg"></div>
+              <div class="thumb" data-i="4"><img src="photos/photo5.jpg"></div>
+              <div class="thumb" data-i="5"><img src="photos/photo6.jpg"></div>
+            </div>
+          </div>
         </div>
 
-        <div class="thumbs" id="thumbs" aria-hidden="false" style="margin-top:16px">
-          <!-- Thumbnail images -->
-          <div class="thumb active" data-index="0"><img src="img1.jpg" alt="photo 1"></div>
-          <div class="thumb" data-index="1"><img src="img2.jpg" alt="photo 2"></div>
-          <div class="thumb" data-index="2"><img src="img3.jpg" alt="photo 3"></div>
-          <div class="thumb" data-index="3"><img src="img4.jpg" alt="photo 4"></div>
-          <div class="thumb" data-index="4"><img src="img5.jpg" alt="photo 5"></div>
-          <div class="thumb" data-index="5"><img src="img6.jpg" alt="photo 6"></div>
+        <div class="right">
+          <div class="neonName" id="namePlace">My Cutest Bestie</div>
+          <div class="typed" id="typed">You make my world sweeter — today is all about you. ✨</div>
+
+          <div class="glowLine"></div>
+
+          <div style="margin-top:12px"> 
+            <div class="actions">
+              <button class="btn" id="playBtn">Play Surprise</button>
+              <button class="outline" id="downloadBtn">Download</button>
+              <div class="heart" id="heartBtn">💗</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;font-size:13px;opacity:0.9">Tip: Tap photos to change. Tap the heart to send a little sparkle ✨</div>
         </div>
       </div>
 
-      <div style="padding:18px">
-        <div class="slideshow" id="slideshow" aria-hidden="false">
-          <div class="slides" id="slides">
-            <div class="slide" style="background-image:url('img1.jpg')"><div class="caption">Memories with you ✨</div></div>
-            <div class="slide" style="background-image:url('img2.jpg')"><div class="caption">Your smile lights up</div></div>
-            <div class="slide" style="background-image:url('img3.jpg')"><div class="caption">Fun times</div></div>
-            <div class="slide" style="background-image:url('img4.jpg')"><div class="caption">Crazy adventures</div></div>
-            <div class="slide" style="background-image:url('img5.jpg')"><div class="caption">Sweet moments</div></div>
-            <div class="slide" style="background-image:url('img6.jpg')"><div class="caption">Forever friends</div></div>
-          </div>
+      <!-- audio -->
+      <audio id="bgAudio" src="audio/birthday.mp3" loop></audio>
 
-          <div class="float-wrap" id="floatWrap" aria-hidden="true"></div>
+      <!-- small floating confetti canvas -->
+      <canvas id="conf" style="position:absolute;inset:0;pointer-events:none;"></canvas>
 
-          <div class="start-overlay" id="startOverlay" role="dialog" aria-label="Start page">
-            <button class="start-btn" id="startBtn">Tap to Start the Surprise 🎶</button>
-          </div>
+      <!-- mobile overlay for autoplay blocking -->
+      <div id="overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,15,26,0.45),rgba(27,5,39,0.6));display:flex;align-items:center;justify-content:center;z-index:80">
+        <div style="text-align:center;color:#fff;">
+          <div style="font-size:20px;margin-bottom:10px">Tap to open your surprise</div>
+          <button class="btn" id="overlayPlay">Open ✨</button>
         </div>
       </div>
-    </div>
 
-    <div style="display:flex;justify-content:center;margin-top:12px">
-      <button class="btn" id="confettiBtn">Throw Confetti 🎊</button>
-      <button class="btn" id="downloadBtn" style="margin-left:8px">Save as Page</button>
     </div>
-
-    <footer>Made with ❤️ </footer>
   </div>
-</div>
 
-<!-- Audio (replace bg-music.mp3) -->
-<audio id="bgMusic" loop src="bg-music.mp3" preload="auto"></audio>
+  <script>
+    // ========= CONFIG =========
+    const PHOTOS = ['photos/photo1.jpg','photos/photo2.jpg','photos/photo3.jpg','photos/photo4.jpg','photos/photo5.jpg','photos/photo6.jpg'];
+    const NAME = 'My Cutest Bestie';
+    document.getElementById('namePlace').textContent = NAME;
+    const TYPED = document.getElementById('typed');
+    // ===========================
 
-<script>
-  // Basic slideshow
-  const slides = document.getElementById('slides');
-  const total = slides.children.length;
-  let index = 0;
-  const thumbs = document.querySelectorAll('.thumb');
+    // Thumbnails interaction
+    const thumbs = document.getElementById('thumbs');
+    const bigImg = document.getElementById('bigImg');
+    let current = 0;
+    thumbs.querySelectorAll('.thumb').forEach(el=>{el.addEventListener('click',()=>{setPhoto(Number(el.dataset.i))})});
+    function setPhoto(i){current=i;bigImg.src=PHOTOS[i];thumbs.querySelectorAll('.thumb').forEach(t=>t.classList.toggle('active',Number(t.dataset.i)===i))}
 
-  function show(i){
-    index = (i + total) % total;
-    slides.style.transform = `translateX(${-index*100}%)`;
-    thumbs.forEach(t=>t.classList.remove('active'));
-    const active = document.querySelector('.thumb[data-index="'+index+'"]');
-    if(active) active.classList.add('active');
-  }
+    // Auto-cycle photos but smooth & subtle
+    let auto = setInterval(()=>{current=(current+1)%PHOTOS.length;setPhoto(current)},3800);
+    document.getElementById('bigPhoto').addEventListener('mouseenter',()=>clearInterval(auto));
+    document.getElementById('bigPhoto').addEventListener('mouseleave',()=>{clearInterval(auto);auto=setInterval(()=>{current=(current+1)%PHOTOS.length;setPhoto(current)},3800)});
 
-  document.getElementById('nextBtn').addEventListener('click', ()=> show(index+1));
-  document.getElementById('prevBtn').addEventListener('click', ()=> show(index-1));
-  thumbs.forEach(t=>{
-    t.addEventListener('click', ()=> show(Number(t.dataset.index)));
-  });
+    // Audio & overlay
+    const audio = document.getElementById('bgAudio');
+    const overlay = document.getElementById('overlay');
+    const overlayPlay = document.getElementById('overlayPlay');
+    const playBtn = document.getElementById('playBtn');
+    async function tryPlay(){try{await audio.play();overlay.style.display='none'}catch(e){overlay.style.display='flex'}}
+    window.addEventListener('load',()=>{setTimeout(tryPlay,400)});
+    overlayPlay.addEventListener('click',()=>{audio.play().catch(()=>{});overlay.style.display='none';startConfetti()});
+    playBtn.addEventListener('click',()=>{audio.play().catch(()=>{});startConfetti()});
 
-  // Auto-advance
-  let autoTimer;
-  function startAuto(){ autoTimer = setInterval(()=> show(index+1), 4500); }
-  function stopAuto(){ clearInterval(autoTimer); }
+    // Download button (prepare a small snapshot zip client-side? We'll fallback to opening images)
+    document.getElementById('downloadBtn').addEventListener('click',()=>{alert('Tip: To download, long-press images on phone or open this page in browser and use Save As.');});
 
-  // Floating hearts generator
-  const floatWrap = document.getElementById('floatWrap');
-  function spawnHearts(n=6){
-    for(let i=0;i<n;i++){
-      const el = document.createElement('div');
-      el.className='heart';
-      const size = 24 + Math.random()*48;
-      el.style.width = el.style.height = size+'px';
-      el.style.left = Math.random()*100 + '%';
-      el.style.bottom = (-20 - Math.random()*30)+'px';
-      el.style.opacity = 0.9;
-      el.style.backgroundImage = 'radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,0.1)), linear-gradient(180deg, #ff7aa8, #ffb6d6)';
-      el.style.borderRadius = '30%';
-      el.style.transform = `rotate(${Math.random()*40-20}deg)`;
-      el.style.animationDuration = (6 + Math.random()*6)+'s';
-      floatWrap.appendChild(el);
-      setTimeout(()=> el.remove(), 12000);
-    }
-  }
+    // Heart sparkle
+    document.getElementById('heartBtn').addEventListener('click',()=>{pulseHeart();spawnHearts(12)});
+    function pulseHeart(){const el=document.getElementById('heartBtn');el.animate([{transform:'scale(1)'},{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:600,iterations:1})}
 
-  // Confetti simple
-  function confetti(){
-    spawnHearts(22);
-  }
+    // Tiny confetti/hearts on canvas
+    const conf = document.getElementById('conf'); const ctx = conf.getContext('2d'); let W,H,parts=[];
+    function resize(){W=conf.width=stage.clientWidth;H=conf.height=stage.clientHeight}
+    const stage=document.getElementById('stage'); window.addEventListener('resize',resize);resize();
+    function spawnHearts(n=30){for(let i=0;i<n;i++){parts.push({x:Math.random()*W,y:H-40- Math.random()*20,vx:(Math.random()-0.5)*2,vy:-Math.random()*6-2,r:8+Math.random()*12,life:80+Math.random()*60,color:\`hsl(${320+Math.random()*30} 90% 60%)\`})} if(!running){running=true;run()} }
+    function run(){ctx.clearRect(0,0,W,H);for(let i=parts.length-1;i>=0;i--){const p=parts[i];p.x+=p.vx; p.y+=p.vy; p.vy+=0.18; p.life--; const a=p.life/120; ctx.save(); ctx.globalAlpha=Math.max(0,Math.min(1,a)); ctx.translate(p.x,p.y); ctx.beginPath(); // heart
+        const s=p.r/10; ctx.moveTo(0,-6*s); ctx.bezierCurveTo(6*s,-14*s,16*s,-10*s,16*s,-2*s); ctx.bezierCurveTo(16*s,6*s,8*s,12*s,0,18*s); ctx.bezierCurveTo(-8*s,12*s,-16*s,6*s,-16*s,-2*s); ctx.bezierCurveTo(-16*s,-10*s,-6*s,-14*s,0,-6*s); ctx.fillStyle=p.color; ctx.fill(); ctx.restore(); if(p.life<=0) parts.splice(i,1);} if(parts.length>0) requestAnimationFrame(run); else running=false}
+    let running=false;
 
-  document.getElementById('confettiBtn').addEventListener('click', confetti);
+    function startConfetti(){spawnHearts(40)}
 
-  // Music handling & autoplay fallback
-  const music = document.getElementById('bgMusic');
-  const muteBtn = document.getElementById('muteBtn');
-  const startOverlay = document.getElementById('startOverlay');
-  const startBtn = document.getElementById('startBtn');
+    // tiny type effect for the typed message
+    const phrase = "You make my world sweeter — today is all about you. ✨";
+    let pi=0; function tick(){TYPED.textContent = phrase.slice(0,pi); pi++; if(pi<=phrase.length) setTimeout(tick,38)}; tick();
 
-  // Browser policy: autoplay with sound often blocked -> require user gesture
-  function startExperience(){
-    startOverlay.style.display='none';
-    music.play().catch(()=>{/*ignore*/});
-    startAutoAndAnimations();
-  }
+    // gestures: swipe to change
+    let touchStartX=null; document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].clientX});
+    document.addEventListener('touchend',e=>{if(touchStartX===null) return; const dx=e.changedTouches[0].clientX - touchStartX; if(Math.abs(dx)>40){ if(dx<0) current=(current+1)%PHOTOS.length; else current=(current-1+PHOTOS.length)%PHOTOS.length; setPhoto(current)} touchStartX=null});
 
-  startBtn.addEventListener('click', startExperience);
+    // try start confetti when audio plays
+    audio.addEventListener('play',()=>{startConfetti()});
 
-  function toggleMute(){
-    if(music.muted){ music.muted=false; muteBtn.textContent='Mute'; }
-    else { music.muted=true; muteBtn.textContent='Unmute'; }
-  }
-  muteBtn.addEventListener('click', toggleMute);
+    // initial setup
+    setPhoto(0);
 
-  function startAutoAndAnimations(){
-    startAuto();
-    confetti();
-    // spawn some hearts repeatedly
-    setInterval(()=> spawnHearts(3), 2200);
-  }
+    // allow setting name and message from URL params
+    const params = new URLSearchParams(location.search);
+    if(params.get('name')) document.getElementById('namePlace').textContent = params.get('name');
+    if(params.get('msg')) { document.getElementById('typed').textContent = params.get('msg') }
 
-  // When page first loads, try to autoplay muted (some browsers allow muted autoplay)
-  window.addEventListener('load', ()=>{
-    music.volume = 0.85;
-    music.muted = false;
-    // Try autoplay; if it fails, show overlay
-    music.play().then(()=> {
-      // autoplay succeeded — hide overlay, start animations
-      startOverlay.style.display='none';
-      startAutoAndAnimations();
-    }).catch(()=> {
-      // show overlay asking user to tap
-      startOverlay.style.display='flex';
-      music.muted = false;
-    });
+    // Hide overlay on desktop (no autoplay blocking there usually)
+    if(!/Mobi|Android/i.test(navigator.userAgent)){overlay.style.display='none'}
+  </script>
 
-    // allow clicking anywhere to start too (mobile)
-    document.body.addEventListener('click', function one(){
-      if(startOverlay.style.display!=='none'){
-        startExperience();
-      }
-      document.body.removeEventListener('click', one);
-    });
-
-  });
-
-  // download page as html (basic)
-  document.getElementById('downloadBtn').addEventListener('click', ()=>{
-    const html = '<!doctype html>\\n' + document.documentElement.outerHTML;
-    const blob = new Blob([html], {type:'text/html'});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'happy-birthday.html';
-    a.click();
-    URL.revokeObjectURL(a.href);
-  });
-
-  // small accessibility: arrow keys
-  window.addEventListener('keydown', (e)=>{
-    if(e.key === 'ArrowRight') show(index+1);
-    if(e.key === 'ArrowLeft') show(index-1);
-    if(e.key === ' '){ e.preventDefault(); confetti(); }
-  });
-
-  // start muted auto if user wants to skip overlay: uncomment following line
-  // music.muted = true; music.play().catch(()=>{});
-</script>
+  <!--
+    USAGE:
+    1) Replace photos/photo1.jpg ... photo6.jpg with your six images (or full URLs).
+    2) Replace audio/birthday.mp3 with an MP3 file you like (or a hosted URL).
+    3) Save as index.html and open on phone. If autoplay blocked, tap the big button.
+    4) Customize name via ?name=HerName and message via ?msg=Your+Message
+  -->
 </body>
 </html>
