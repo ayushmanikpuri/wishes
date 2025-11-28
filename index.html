@@ -1,210 +1,249 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>✨ For My Bestie — Happy Birthday ✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Parisienne&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg1:#0b0f1a; --bg2:#1b0527;
-      --neon1:#ff6bd6; --neon2:#8a5cff; --neon3:#ffd86b;
-      --glass: rgba(255,255,255,0.04);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Montserrat,system-ui,Arial;color:#fff;background:radial-gradient(1200px 600px at 10% 10%, rgba(138,92,255,0.12), transparent 10%), linear-gradient(180deg,var(--bg1),var(--bg2));-webkit-font-smoothing:antialiased}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Ananya — Birthday Surprise (multi-theme)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1220; --glass:rgba(255,255,255,0.04);
+    --accent-pink:#ff73c9; --accent-purple:#9b6bff; --accent-gold:#ffd66b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;font-family:Poppins,system-ui,Arial;background:linear-gradient(180deg,#050412,#0e0820);color:#fff}
+  .app{min-height:100vh;padding:18px;display:flex;flex-direction:column;gap:12px}
+  /* theme switcher */
+  .topbar{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+  .themeBtn{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.03);cursor:pointer;font-weight:600}
+  .themeBtn.active{box-shadow:0 10px 30px rgba(0,0,0,0.6);background:linear-gradient(90deg,var(--accent-pink),var(--accent-purple));color:#0b0f1a}
 
-    /* Container */
-    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px}
-    .stage{width:100%;max-width:950px;border-radius:20px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 20px 50px rgba(2,6,23,0.6);position:relative;overflow:hidden}
+  /* Begin area */
+  .start{display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px)}
+  .bigBtn{padding:12px 18px;border-radius:999px;border:none;background:linear-gradient(90deg,var(--accent-pink),var(--accent-purple));color:#071028;font-weight:700;cursor:pointer}
 
-    /* Neon header */
-    header{display:flex;align-items:center;gap:14px}
-    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--neon1),var(--neon2));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;box-shadow:0 6px 30px rgba(138,92,255,0.18),0 0 20px rgba(255,107,214,0.06)}
-    .title{font-weight:800;font-size:22px;letter-spacing:0.2px}
-    .subtitle{opacity:0.85;font-size:13px;margin-top:4px}
+  /* main container holds themes as variants */
+  .stage{position:relative;flex:1;display:flex;flex-direction:column;gap:12px}
+  .viewer{position:relative;border-radius:16px;overflow:hidden;flex:1;background:var(--bg);display:flex;flex-direction:column}
+  .slides{position:relative;flex:1;display:block}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;display:flex;align-items:center;justify-content:center}
+  .slide.active{opacity:1}
+  .slide img{width:100%;height:100%;object-fit:cover}
 
-    /* Main visual: 3D-ish carousel with glass card */
-    .hero{display:flex;gap:18px;margin-top:16px;align-items:center}
-    .left{flex:1;min-width:250px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:14px;backdrop-filter:blur(6px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02),0 18px 40px rgba(2,6,23,0.6)}
-    .big-photo{width:100%;height:420px;border-radius:12px;overflow:hidden;position:relative;border:2px solid rgba(255,255,255,0.03)}
-    .big-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform 0.8s cubic-bezier(.2,.8,.2,1)}
-    .big-photo:hover img{transform:scale(1.04) rotate(-0.6deg)}
+  /* caption common */
+  .captionBox{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;padding:12px 16px;border-radius:12px;background:rgba(0,0,0,0.36);backdrop-filter:blur(6px);text-align:center;max-width:92%}
+  .name{font-family:Parisienne,cursive;font-size:34px}
+  .msg{font-size:13px;opacity:0.95;margin-top:6px;color:#f6eefe}
 
-    /* thumbnails */
-    .thumbs{display:flex;gap:8px;margin-top:10px}
-    .thumb{width:56px;height:56px;border-radius:10px;overflow:hidden;cursor:pointer;flex:0 0 56px;border:2px solid transparent;transition:transform .2s, border-color .2s}
-    .thumb img{width:100%;height:100%;object-fit:cover}
-    .thumb.active{transform:translateY(-6px);border-color:linear-gradient(90deg,var(--neon1),var(--neon2));box-shadow:0 10px 30px rgba(138,92,255,0.12)}
+  /* controls */
+  .controls{display:flex;gap:10px;align-items:center;padding:8px;justify-content:center}
+  .iconBtn{padding:10px;border-radius:12px;background:rgba(255,255,255,0.03);cursor:pointer}
+  .dots{display:flex;gap:8px}
+  .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,0.18)}
+  .dot.active{background:linear-gradient(90deg,var(--accent-pink),var(--accent-purple))}
 
-    /* right panel — message + effects */
-    .right{width:360px}
-    .neonName{font-family:Parisienne, cursive;font-size:44px;text-shadow:0 0 8px rgba(255,107,214,0.25),0 0 24px rgba(138,92,255,0.12);margin:6px 0}
-    .typed{font-size:15px;opacity:0.95;margin-bottom:12px}
+  /* theme A: Minimal Clean */
+  .theme-A .viewer{background:linear-gradient(180deg,#fff,#f8f7f6);color:#111}
+  .theme-A .slide img{filter:contrast(.95) saturate(.9);mix-blend-mode:normal}
+  .theme-A .captionBox{background:rgba(255,255,255,0.9);color:#111}
+  .theme-A .bigBtn{background:linear-gradient(90deg,#fff4d2,#ffd66b);color:#111}
 
-    /* CTA & heart */
-    .actions{display:flex;gap:12px;align-items:center}
-    .btn{padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--neon1),var(--neon2));font-weight:700;box-shadow:0 10px 30px rgba(138,92,255,0.12);cursor:pointer;border:none;color:#0b0f1a}
-    .outline{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;cursor:pointer}
-    .heart{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--neon3),var(--neon1));box-shadow:0 8px 30px rgba(255,216,107,0.12);cursor:pointer}
+  /* theme B: Pink Cute */
+  .theme-B .viewer{background:linear-gradient(180deg,#ffeff8,#fff0f6)}
+  .theme-B .captionBox{background:linear-gradient(90deg,rgba(255,115,200,0.12),rgba(155,107,255,0.06));border:1px solid rgba(255,255,255,0.06)}
+  .theme-B .name{color:var(--accent-pink)}
 
-    /* glow lines */
-    .glowLine{height:6px;border-radius:999px;background:linear-gradient(90deg, rgba(255,107,214,0.12), rgba(138,92,255,0.12));margin-top:12px}
+  /* theme C: Black Neon */
+  .theme-C .viewer{background:linear-gradient(180deg,#060216,#09021a);border:1px solid rgba(255,255,255,0.02)}
+  .theme-C .captionBox{background:linear-gradient(90deg, rgba(155,107,255,0.12), rgba(255,115,200,0.06)); box-shadow:0 8px 40px rgba(155,107,255,0.06)}
+  .theme-C .name{color:var(--accent-purple);text-shadow:0 4px 18px rgba(155,107,255,0.16)}
 
-    /* mini confetti sparkles */
-    .sparkle{position:absolute;filter:blur(.6px);opacity:.9}
+  /* theme D: Scrapbook / Collage */
+  .theme-D .viewer{background:linear-gradient(180deg,#fef6ef,#fffdfb);color:#222}
+  .theme-D .slide img{object-fit:cover;filter:saturate(.95) contrast(.98);transform:rotate(-1deg)}
+  .theme-D .captionBox{background:linear-gradient(90deg,rgba(255,255,255,0.98),rgba(255,250,245,0.98));color:#222;border:1px solid rgba(0,0,0,0.06)}
+  .theme-D .name{color:#c04a7a;font-weight:700}
 
-    /* mobile adjustments */
-    @media (max-width:820px){.hero{flex-direction:column}.right{width:100%}.big-photo{height:320px}.neonName{font-size:36px}}
-  </style>
+  /* theme E: Emotional Romantic */
+  .theme-E .viewer{background:linear-gradient(180deg,#fff6f8,#fff0f6)}
+  .theme-E .captionBox{background:linear-gradient(90deg, rgba(255,246,250,0.92), rgba(255,235,240,0.9));color:#37132a}
+  .theme-E .name{color:#b02f6a}
+
+  /* responsive */
+  @media (max-width:720px){
+    .name{font-size:28px}
+    .captionBox{bottom:12px;padding:10px}
+    .start h2{font-size:20px}
+  }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="stage" id="stage">
-
-      <!-- sparkles SVGs -->
-      <svg class="sparkle" style="top:-30px;left:-30px;width:220px;opacity:0.12;" viewBox="0 0 100 100"><g fill="none" stroke="url(#g1)" stroke-width="2"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ff6bd6"/><stop offset="1" stop-color="#8a5cff"/></linearGradient></defs><path d="M50 2 L58 36 L92 50 L58 64 L50 98 L42 64 L8 50 L42 36 Z" /></g></svg>
-
-      <header>
-        <div class="logo">❤</div>
-        <div style="flex:1">
-          <div class="title">Happy Birthday — <span style="color:var(--neon1)">Surprise</span></div>
-          <div class="subtitle">A cool, romantic vibe — built just for her. Mobile-ready.</div>
-        </div>
-        <div style="text-align:right;font-size:13px;opacity:0.9">6 photos • Animated • Music</div>
-      </header>
-
-      <div class="hero">
-        <div class="left">
-          <div class="card">
-            <div class="big-photo" id="bigPhoto">
-              <img src="photos/photo1.jpg" alt="photo big" id="bigImg">
-            </div>
-            <div class="thumbs" id="thumbs">
-              <div class="thumb active" data-i="0"><img src="photos/photo1.jpg"></div>
-              <div class="thumb" data-i="1"><img src="photos/photo2.jpg"></div>
-              <div class="thumb" data-i="2"><img src="photos/photo3.jpg"></div>
-              <div class="thumb" data-i="3"><img src="photos/photo4.jpg"></div>
-              <div class="thumb" data-i="4"><img src="photos/photo5.jpg"></div>
-              <div class="thumb" data-i="5"><img src="photos/photo6.jpg"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="right">
-          <div class="neonName" id="namePlace">My Cutest Bestie</div>
-          <div class="typed" id="typed">You make my world sweeter — today is all about you. ✨</div>
-
-          <div class="glowLine"></div>
-
-          <div style="margin-top:12px"> 
-            <div class="actions">
-              <button class="btn" id="playBtn">Play Surprise</button>
-              <button class="outline" id="downloadBtn">Download</button>
-              <div class="heart" id="heartBtn">💗</div>
-            </div>
-          </div>
-
-          <div style="margin-top:12px;font-size:13px;opacity:0.9">Tip: Tap photos to change. Tap the heart to send a little sparkle ✨</div>
-        </div>
-      </div>
-
-      <!-- audio -->
-      <audio id="bgAudio" src="audio/birthday.mp3" loop></audio>
-
-      <!-- small floating confetti canvas -->
-      <canvas id="conf" style="position:absolute;inset:0;pointer-events:none;"></canvas>
-
-      <!-- mobile overlay for autoplay blocking -->
-      <div id="overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,15,26,0.45),rgba(27,5,39,0.6));display:flex;align-items:center;justify-content:center;z-index:80">
-        <div style="text-align:center;color:#fff;">
-          <div style="font-size:20px;margin-bottom:10px">Tap to open your surprise</div>
-          <button class="btn" id="overlayPlay">Open ✨</button>
-        </div>
-      </div>
-
+  <div class="app theme-C" id="app"> <!-- default theme C -->
+    <div class="topbar">
+      <button class="themeBtn" data-theme="A">A — Minimal</button>
+      <button class="themeBtn" data-theme="B">B — Pink Cute</button>
+      <button class="themeBtn active" data-theme="C">C — Black Neon</button>
+      <button class="themeBtn" data-theme="D">D — Scrapbook</button>
+      <button class="themeBtn" data-theme="E">E — Emotional</button>
     </div>
+
+    <div class="start" id="start">
+      <div style="font-size:48px;background:linear-gradient(90deg,var(--accent-pink),var(--accent-purple));-webkit-background-clip:text;color:transparent">🎀 For Ananya</div>
+      <h2 style="font-family:Parisienne,cursive;font-size:36px">A Special Surprise</h2>
+      <p style="opacity:0.9;max-width:88%;text-align:center">Tap Begin to open the surprise. Then switch between themes with the buttons above until you find the one she loves.</p>
+      <button class="bigBtn" id="beginBtn">Begin ✨</button>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="viewer" id="viewer">
+        <div class="slides" id="slides">
+          <!-- Replace these src values if needed; these filenames are the ones you uploaded -->
+          <div class="slide active"><img src="3d-blue-6-six-digit-260nw-2439822983.jpg.webp" alt=""></div>
+          <div class="slide"><img src="3d-blue-6-six-digit-260nw-2439822983 copy.jpg.webp" alt=""></div>
+          <div class="slide"><img src="3d-blue-6-six-digit-260nw-2439822983 copy 3.jpg.webp" alt=""></div>
+          <div class="slide"><img src="3d-blue-6-six-digit-260nw-2439822983 copy 4.jpg.webp" alt=""></div>
+          <div class="slide"><img src="3d-blue-6-six-digit-260nw-2439822983 copy 5.jpg.webp" alt=""></div>
+          <div class="slide"><img src="3d-blue-6-six-digit-260nw-2439822983 copy 6.jpg.webp" alt=""></div>
+        </div>
+
+        <div class="captionBox">
+          <div class="name" id="name">Ananya</div>
+          <div class="msg" id="msg">Ananya, you are a little bit of magic in a world that often forgets to sparkle.
+Thank you for being a light, a warmth, and a beautiful reason to smile. May your birthday shine brighter than every star in the sky ✨💗</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="iconBtn" id="heartBtn">💗</div>
+        <div class="iconBtn" id="playBtn">▶ Play</div>
+        <div style="flex:1"></div>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+
+    <audio id="audio" src="audio/birthday.mp3" loop></audio>
   </div>
 
-  <script>
-    // ========= CONFIG =========
-    const PHOTOS = ['photos/photo1.jpg','photos/photo2.jpg','photos/photo3.jpg','photos/photo4.jpg','photos/photo5.jpg','photos/photo6.jpg'];
-    const NAME = 'My Cutest Bestie';
-    document.getElementById('namePlace').textContent = NAME;
-    const TYPED = document.getElementById('typed');
-    // ===========================
+<script>
+  // Theme switching
+  const app = document.getElementById('app');
+  document.querySelectorAll('.themeBtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.themeBtn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const t = btn.dataset.theme;
+      app.className = 'app theme-' + t;
+    });
+  });
 
-    // Thumbnails interaction
-    const thumbs = document.getElementById('thumbs');
-    const bigImg = document.getElementById('bigImg');
-    let current = 0;
-    thumbs.querySelectorAll('.thumb').forEach(el=>{el.addEventListener('click',()=>{setPhoto(Number(el.dataset.i))})});
-    function setPhoto(i){current=i;bigImg.src=PHOTOS[i];thumbs.querySelectorAll('.thumb').forEach(t=>t.classList.toggle('active',Number(t.dataset.i)===i))}
+  // slideshow
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dots = document.getElementById('dots');
+  let idx = 0;
+  slides.forEach((s,i)=>{
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===0 ? ' active':'' );
+    d.addEventListener('click', ()=>{go(i)});
+    dots.appendChild(d);
+  });
 
-    // Auto-cycle photos but smooth & subtle
-    let auto = setInterval(()=>{current=(current+1)%PHOTOS.length;setPhoto(current)},3800);
-    document.getElementById('bigPhoto').addEventListener('mouseenter',()=>clearInterval(auto));
-    document.getElementById('bigPhoto').addEventListener('mouseleave',()=>{clearInterval(auto);auto=setInterval(()=>{current=(current+1)%PHOTOS.length;setPhoto(current)},3800)});
+  function update(){
+    slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+    Array.from(dots.children).forEach((d,i)=>d.classList.toggle('active', i===idx));
+  }
+  let timer = setInterval(()=>{ idx = (idx+1)%slides.length; update(); }, 3500);
+  function resetTimer(){ clearInterval(timer); timer = setInterval(()=>{ idx = (idx+1)%slides.length; update(); }, 3500); }
 
-    // Audio & overlay
-    const audio = document.getElementById('bgAudio');
-    const overlay = document.getElementById('overlay');
-    const overlayPlay = document.getElementById('overlayPlay');
-    const playBtn = document.getElementById('playBtn');
-    async function tryPlay(){try{await audio.play();overlay.style.display='none'}catch(e){overlay.style.display='flex'}}
-    window.addEventListener('load',()=>{setTimeout(tryPlay,400)});
-    overlayPlay.addEventListener('click',()=>{audio.play().catch(()=>{});overlay.style.display='none';startConfetti();});
-    overlay.style.pointerEvents='auto';('click',()=>{audio.play().catch(()=>{});overlay.style.display='none';startConfetti()});
-    playBtn.addEventListener('click',()=>{audio.play().catch(()=>{});startConfetti()});
+  function go(i){ idx = i; update(); resetTimer(); }
 
-    // Download button (prepare a small snapshot zip client-side? We'll fallback to opening images)
-    document.getElementById('downloadBtn').addEventListener('click',()=>{alert('Tip: To download, long-press images on phone or open this page in browser and use Save As.');});
+  // Begin button: show viewer (hide start)
+  const beginBtn = document.getElementById('beginBtn');
+  const start = document.getElementById('start');
+  const stage = document.getElementById('stage');
+  beginBtn.addEventListener('click', ()=>{
+    start.style.display = 'none';
+    // ensure viewer visible
+    stage.style.display = 'flex';
+    // try play audio
+    document.getElementById('audio').play().catch(()=>{});
+    burstConfetti();
+  });
 
-    // Heart sparkle
-    document.getElementById('heartBtn').addEventListener('click',()=>{pulseHeart();spawnHearts(12)});
-    function pulseHeart(){const el=document.getElementById('heartBtn');el.animate([{transform:'scale(1)'},{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:600,iterations:1})}
+  // play / pause
+  const audio = document.getElementById('audio');
+  const playBtn = document.getElementById('playBtn');
+  let playing = false;
+  playBtn.addEventListener('click', ()=>{
+    if(!playing){ audio.play().catch(()=>{}); playBtn.textContent='⏸ Pause'; playing = true; }
+    else { audio.pause(); playBtn.textContent='▶ Play'; playing = false; }
+  });
+  audio.addEventListener('play', ()=>{ playing = true; playBtn.textContent='⏸ Pause'; });
+  audio.addEventListener('pause', ()=>{ playing = false; playBtn.textContent='▶ Play'; });
 
-    // Tiny confetti/hearts on canvas
-    const conf = document.getElementById('conf'); const ctx = conf.getContext('2d'); let W,H,parts=[];
-    function resize(){W=conf.width=stage.clientWidth;H=conf.height=stage.clientHeight}
-    const stage=document.getElementById('stage'); window.addEventListener('resize',resize);resize();
-    function spawnHearts(n=30){for(let i=0;i<n;i++){parts.push({x:Math.random()*W,y:H-40- Math.random()*20,vx:(Math.random()-0.5)*2,vy:-Math.random()*6-2,r:8+Math.random()*12,life:80+Math.random()*60,color:\`hsl(${320+Math.random()*30} 90% 60%)\`})} if(!running){running=true;run()} }
-    function run(){ctx.clearRect(0,0,W,H);for(let i=parts.length-1;i>=0;i--){const p=parts[i];p.x+=p.vx; p.y+=p.vy; p.vy+=0.18; p.life--; const a=p.life/120; ctx.save(); ctx.globalAlpha=Math.max(0,Math.min(1,a)); ctx.translate(p.x,p.y); ctx.beginPath(); // heart
-        const s=p.r/10; ctx.moveTo(0,-6*s); ctx.bezierCurveTo(6*s,-14*s,16*s,-10*s,16*s,-2*s); ctx.bezierCurveTo(16*s,6*s,8*s,12*s,0,18*s); ctx.bezierCurveTo(-8*s,12*s,-16*s,6*s,-16*s,-2*s); ctx.bezierCurveTo(-16*s,-10*s,-6*s,-14*s,0,-6*s); ctx.fillStyle=p.color; ctx.fill(); ctx.restore(); if(p.life<=0) parts.splice(i,1);} if(parts.length>0) requestAnimationFrame(run); else running=false}
-    let running=false;
+  // heart = confetti
+  document.getElementById('heartBtn').addEventListener('click', burstConfetti);
 
-    function startConfetti(){spawnHearts(40)}
+  // simple confetti hearts implementation
+  let confettiParticles = [];
+  function burstConfetti(){
+    const w = innerWidth, h = innerHeight;
+    for(let i=0;i<40;i++){
+      confettiParticles.push({
+        x: w/2 + (Math.random()-0.5)*120,
+        y: h/2 + (Math.random()-0.5)*60,
+        vx: (Math.random()-0.5)*8,
+        vy: -Math.random()*8 - 1,
+        r: 4 + Math.random()*8,
+        life: 80 + Math.random()*80,
+        color: `hsl(${300 + Math.random()*60} 90% 60%)`
+      });
+    }
+    if(!window._confettiRunning) { window._confettiRunning = true; runConfetti(); }
+  }
 
-    // tiny type effect for the typed message
-    const phrase = "You make my world sweeter — today is all about you. ✨";
-    let pi=0; function tick(){TYPED.textContent = phrase.slice(0,pi); pi++; if(pi<=phrase.length) setTimeout(tick,38)}; tick();
+  function runConfetti(){
+    if(!document.getElementById('_cv')) {
+      const c = document.createElement('canvas'); c.id = '_cv';
+      Object.assign(c.style, {position:'fixed', left:0, top:0, inset:0, pointerEvents:'none', zIndex:9999});
+      document.body.appendChild(c);
+      c.width = innerWidth; c.height = innerHeight;
+      window._cv = c; window._ctx = c.getContext('2d');
+      window.addEventListener('resize', ()=>{ window._cv.width = innerWidth; window._cv.height = innerHeight; });
+    }
+    const ctx = window._ctx;
+    ctx.clearRect(0,0,window._cv.width, window._cv.height);
+    for(let i = confettiParticles.length - 1; i >= 0; i--){
+      const p = confettiParticles[i];
+      p.x += p.vx; p.y += p.vy; p.vy += 0.2; p.life--;
+      ctx.globalAlpha = Math.max(0, p.life / 120);
+      ctx.fillStyle = p.color;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+      if(p.life <= 0) confettiParticles.splice(i,1);
+    }
+    if(confettiParticles.length > 0){
+      requestAnimationFrame(runConfetti);
+    } else {
+      window._confettiRunning = false;
+      if(window._cv) { try{ setTimeout(()=>{ window._cv.remove(); delete window._cv; delete window._ctx; }, 300); }catch(e){} }
+    }
+  }
 
-    // gestures: swipe to change
-    let touchStartX=null; document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].clientX});
-    document.addEventListener('touchend',e=>{if(touchStartX===null) return; const dx=e.changedTouches[0].clientX - touchStartX; if(Math.abs(dx)>40){ if(dx<0) current=(current+1)%PHOTOS.length; else current=(current-1+PHOTOS.length)%PHOTOS.length; setPhoto(current)} touchStartX=null});
+  // touch swipe change for slides
+  let sx = null;
+  document.querySelector('.slides').addEventListener('touchstart', e => { sx = e.changedTouches[0].clientX; });
+  document.querySelector('.slides').addEventListener('touchend', e => {
+    if(sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    if(Math.abs(dx) > 40){
+      if(dx < 0) { idx = (idx + 1) % slides.length; update(); resetTimer(); }
+      else { idx = (idx - 1 + slides.length) % slides.length; update(); resetTimer(); }
+    }
+    sx = null;
+  });
 
-    // try start confetti when audio plays
-    audio.addEventListener('play',()=>{startConfetti()});
-
-    // initial setup
-    setPhoto(0);
-
-    // allow setting name and message from URL params
-    const params = new URLSearchParams(location.search);
-    if(params.get('name')) document.getElementById('namePlace').textContent = params.get('name');
-    if(params.get('msg')) { document.getElementById('typed').textContent = params.get('msg') }
-
-    // Hide overlay on desktop (no autoplay blocking there usually)
-    if(!/Mobi|Android/i.test(navigator.userAgent)){overlay.style.display='none'}
-  </script>
-
-  <!--
-    USAGE:
-    1) Replace photos/photo1.jpg ... photo6.jpg with your six images (or full URLs).
-    2) Replace audio/birthday.mp3 with an MP3 file you like (or a hosted URL).
-    3) Save as index.html and open on phone. If autoplay blocked, tap the big button.
-    4) Customize name via ?name=HerName and message via ?msg=Your+Message
-  -->
+  // initial UI adjustments
+  document.getElementById('stage').style.display = 'none';
+  update();
+</script>
 </body>
 </html>
